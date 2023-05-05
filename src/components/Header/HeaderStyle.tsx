@@ -6,6 +6,10 @@ const DivHeader = styled.div`
   padding: 0.5rem 4rem;
   border-bottom: 2px solid #00000022;
   justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: white;
 
   & > div:nth-child(1) {
     justify-self: start;
