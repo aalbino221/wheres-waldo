@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 import LeaderboardCards from './LeaderboardCards';
 import LeaderboardTables from './LeaderboardTable';
+import cardInfo from '../Home/CardInfo';
+import { StateContext } from '../../App';
+import { useContext, useEffect } from 'react';
 
 const Div = styled.div`
   display: flex;
@@ -20,13 +23,17 @@ const Div = styled.div`
 `;
 
 export default function Leaderboard() {
+  const { setTimer } = useContext(StateContext)[1];
+  useEffect(() => {
+    setTimer(0);
+  });
   return (
     <Div>
       <h1>Leaderboard</h1>
       <div>
-        <LeaderboardCards />
-        <LeaderboardCards />
-        <LeaderboardCards />
+        {cardInfo.map((item) => (
+          <LeaderboardCards cardInfo={item} key={item.id} />
+        ))}
       </div>
       <LeaderboardTables />
     </Div>

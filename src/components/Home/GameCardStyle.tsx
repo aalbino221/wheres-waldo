@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const CardDiv = styled.div`
   height: 370px;
-  width: 500px;
+  width: max(300px, 27vw);
   border: 2px solid #0000001a;
 
   //FIRST DIV

@@ -1,6 +1,21 @@
 import Table from './LeaderboardTableStyle';
+import getTableData from '../../firebase/firestore/getTableData';
+import { useContext, useEffect, useState } from 'react';
+import { StateContext } from '../../App';
 
 export default function LeaderboardTable() {
+  const [tableData, setTableData] = useState<any>([]);
+
+  const { selectedLeaderboard } = useContext(StateContext)[2];
+
+  const fetchTableData = async () => {
+    const data = await getTableData(selectedLeaderboard);
+    setTableData(data);
+  };
+
+  useEffect(() => {
+    fetchTableData();
+  });
   return (
     <Table className="styled-table">
       <thead>
@@ -10,10 +25,14 @@ export default function LeaderboardTable() {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td colSpan={1}>Robinelson</td>
-          <td colSpan={3}>30.2</td>
-        </tr>
+        {tableData.map((row: any) => {
+          return (
+            <tr key={row.name}>
+              <td colSpan={1}>{row.name}</td>
+              <td colSpan={3}>{(row.time / 1000).toFixed(2)}</td>
+            </tr>
+          );
+        })}
       </tbody>
     </Table>
   );

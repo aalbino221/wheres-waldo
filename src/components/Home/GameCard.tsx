@@ -1,8 +1,4 @@
 import { useContext } from 'react';
-import waldo from '../../assets/icons/waldo.jpg';
-import wenda from '../../assets/icons/wenda.jpg';
-import odlaw from '../../assets/icons/odlaw.jpg';
-import mage from '../../assets/icons/mage.jpg';
 import CardDiv from './GameCardStyle';
 import StyledLink from '../reusuable/Link';
 import styled from 'styled-components';
@@ -19,12 +15,7 @@ const Button = styled.button`
 
 const Link = StyledLink;
 
-interface CardInfo {
-  id: number;
-  title: string;
-  img: string;
-  characters: string[];
-}
+import { CardInfo } from './CardInfo';
 
 export default function GameCard({ cardInfo }: { cardInfo: CardInfo }) {
   const { id, img, title, characters } = cardInfo;
@@ -43,17 +34,14 @@ export default function GameCard({ cardInfo }: { cardInfo: CardInfo }) {
       >
         <CardDiv>
           <div>
-            <img src={img} alt="" />
+            <img src={img.link} alt="" />
           </div>
           <div>
             <h3>{title}</h3>
             <div>
-              {characters.map((item, index) => {
-                if (item == 'waldo') return <img src={waldo} key={index} />;
-                if (item == 'wenda') return <img src={wenda} key={index} />;
-                if (item == 'odlaw') return <img src={odlaw} key={index} />;
-                if (item == 'mage') return <img src={mage} key={index} />;
-              })}
+              {characters.map((character, index) => (
+                <img key={index} src={character.photo} />
+              ))}
             </div>
           </div>
         </CardDiv>

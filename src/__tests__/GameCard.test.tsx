@@ -18,7 +18,12 @@ const mockInfo = {
   id: 1,
   title: 'Beach',
   img: 'beach',
-  characters: ['waldo', 'wenda', 'odlaw', 'mage'],
+  characters: [
+    { name: 'waldo', found: false, photo: '' },
+    { name: 'wenda', found: false, photo: '' },
+    { name: 'odlaw', found: false, photo: '' },
+    { name: 'wizard', found: false, photo: '' },
+  ],
 };
 
 let selectedGame = {

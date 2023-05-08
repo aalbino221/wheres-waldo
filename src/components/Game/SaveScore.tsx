@@ -1,4 +1,11 @@
 import styled from 'styled-components';
+import { useContext, useRef } from 'react';
+import { StateContext } from '../../App';
+import formatTime from '../reusuable/formatTimeFunction';
+import writeScore from '../../firebase/firestore/writeScore';
+import StyledLink from '../reusuable/Link';
+
+const Link = StyledLink;
 
 const Dialog = styled.div`
   display: flex;
@@ -55,21 +62,43 @@ const Dialog = styled.div`
     width: 35%;
     min-width: fit-content;
   }
-  & button + button {
+  & a:nth-child(2) > button {
     background-color: #fd2b2b;
   }
 `;
 
 export default function SaveScore() {
+  const { timer } = useContext(StateContext)[1];
+  const { selectedGame } = useContext(StateContext)[0];
+  const { setSelectedLeaderboard } = useContext(StateContext)[2];
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const writeTable = () => {
+    const time = timer;
+    const { id } = selectedGame;
+    const name =
+      inputRef.current && inputRef.current.value != ''
+        ? inputRef.current.value
+        : 'Anonymous';
+    writeScore(id, name, time);
+    setSelectedLeaderboard(id);
+  };
+
   return (
     <Dialog>
-      <dialog open>
-        <p>You finished in 00:18:02 !</p>
+      <dialog>
+        <p>You finished in {formatTime(timer)} !</p>
         <p>Submit your name to the leaderboard</p>
-        <input type="text" placeholder="Your Name" />
+        <input type="text" placeholder="Your Name" ref={inputRef} />
         <div>
-          <button type="button">RETURN HOME</button>
-          <button type="submit">SUBMIT</button>
+          <Link to="/">
+            <button type="button">RETURN HOME</button>
+          </Link>
+          <Link to="/leaderboard">
+            <button type="submit" onClick={writeTable}>
+              SUBMIT
+            </button>
+          </Link>
         </div>
       </dialog>
     </Dialog>

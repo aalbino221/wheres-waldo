@@ -1,8 +1,8 @@
 import CardDiv from '../Home/GameCardStyle';
 import styled from 'styled-components';
-import beach from '../../assets/background/beach.jpg';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { StateContext } from '../../App';
+import { CardInfo } from '../Home/CardInfo';
 
 const Card = styled(CardDiv)`
   height: 295px;
@@ -26,27 +26,31 @@ const Button = styled.button`
   outline: inherit;
 `;
 
-interface CardInfo {
-  id: number;
-  title: string;
-  img: string;
-  characters: string[];
-}
-
 export default function LeaderboardCards({ cardInfo }: { cardInfo: CardInfo }) {
+  const [active, setActive] = useState(false);
   const { id, title, img } = cardInfo;
-  const { setSelectedLeaderboard } = useContext(StateContext)[2];
+  const { selectedLeaderboard, setSelectedLeaderboard } =
+    useContext(StateContext)[2];
+
+  const changeActive = () => {
+    selectedLeaderboard === id ? setActive(true) : setActive(false);
+  };
+
   const changeLeaderboard = () => {
     setSelectedLeaderboard(id);
   };
+
+  useEffect(() => {
+    changeActive();
+  });
 
   return (
     <Button onClick={changeLeaderboard}>
       <Card>
         <div>
-          <img src={img} alt="" />
+          <img src={img.link} alt="" />
         </div>
-        <div className="active">
+        <div className={active ? 'active' : ''}>
           <h3>{title}</h3>
         </div>
       </Card>

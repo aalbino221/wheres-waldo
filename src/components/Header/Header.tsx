@@ -1,12 +1,14 @@
-import React from 'react';
 import StyledLink from '../reusuable/Link';
 import CurrentGame from './CurrentGame';
 import DivHeader from './HeaderStyle';
 import waldoHeader from '../../assets/icons/waldo-header.jpg';
+import { StateContext } from '../../App';
+import { useContext } from 'react';
 
 const Link = StyledLink;
 
 export default function Header() {
+  const { timer } = useContext(StateContext)[1];
   return (
     <DivHeader>
       <div>
@@ -19,11 +21,7 @@ export default function Header() {
           </p>
         </Link>
       </div>
-      <div>
-        <div style={{ display: 'none' }}>
-          <CurrentGame />
-        </div>
-      </div>
+      <div>{timer ? <CurrentGame /> : ''}</div>
       <div>
         <Link to="./leaderboard">
           <button>

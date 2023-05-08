@@ -1,5 +1,7 @@
+import { useContext } from 'react';
 import styled from 'styled-components';
-import waldo from '../../assets/icons/waldo.jpg';
+import { StateContext } from '../../App';
+import formatTime from '../reusuable/formatTimeFunction';
 
 const CurrentGameDiv = styled.div`
   display: flex;
@@ -16,21 +18,33 @@ const CurrentGameDiv = styled.div`
     object-fit: cover;
     object-position: center;
   }
-  & > h2 {
-    font-weight: 500;
+  & h2 {
+    font-weight: 400;
+    color: #000000ef;
   }
 `;
 
 export default function CurrentGame() {
+  const { selectedGame } = useContext(StateContext)[0];
+  const { timer } = useContext(StateContext)[1];
+
   return (
     <CurrentGameDiv>
       <div>
-        <img src={waldo} alt="" />
-        <img src={waldo} alt="" />
-        <img src={waldo} alt="" />
-        <img src={waldo} alt="" />
+        {selectedGame.characters.map((character: any, index: number) => {
+          return (
+            <img
+              key={index}
+              src={character.photo}
+              style={{ filter: character.found ? 'grayscale(100%)' : '' }}
+              alt=""
+            />
+          );
+        })}
       </div>
-      <h2>00:00:00</h2>
+      <div>
+        <h2>{formatTime(timer)}</h2>
+      </div>
     </CurrentGameDiv>
   );
 }
