@@ -60,7 +60,7 @@ export default function Game() {
     const [x, y] = convertCoordinates(xCoord, yCoord);
     const change = await verifyCoordinates(event, x, y);
     if (change) {
-      addSquare(event.pageX, event.pageY);
+      addSquare(xCoord, yCoord);
     }
   };
 
@@ -76,8 +76,11 @@ export default function Game() {
   };
 
   const addSquare = (x: number, y: number) => {
-    setSquares([...squares, { x, y }]);
-    console.log(x, y);
+    const { clientWidth: currentX, clientHeight: currentY } = imgRef.current!;
+    const xPercentagem: number = (x / currentX) * 100;
+    const yPercentagem = (y / currentY) * 100;
+    setSquares([...squares, { x: xPercentagem, y: yPercentagem }]);
+    console.log(xPercentagem, yPercentagem);
   };
 
   useEffect(() => {
@@ -98,18 +101,13 @@ export default function Game() {
   }, [visible]);
 
   return (
-    <GameDiv>
+    <GameDiv onClick={handleClick}>
       {squares.map(
         (square: { x: number; y: number }, index: Key | null | undefined) => (
           <Square key={index} x={square.x} y={square.y} />
         ),
       )}{' '}
-      <img
-        src={selectedGame.img.link}
-        alt=""
-        onClick={handleClick}
-        ref={imgRef}
-      />
+      <img src={selectedGame.img.link} alt="" ref={imgRef} />
       {visible ? <SaveScore /> : ''}
     </GameDiv>
   );

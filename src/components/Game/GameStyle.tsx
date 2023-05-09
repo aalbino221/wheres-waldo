@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const GameDiv = styled.div`
+  position: relative;
   height: fit-content;
   width: 90vw;
   display: flex;
@@ -13,12 +14,12 @@ const GameDiv = styled.div`
 
 const Square = styled.div<{ x: number; y: number }>`
   position: absolute;
-  width: 50px;
-  height: 50px;
+  width: 2.6vw;
+  height: 2.6vw;
   border-radius: 50%;
-  border: 5px solid red;
-  left: ${({ x }) => `${x - 25}px`};
-  top: ${({ y }) => `${y - 25}px`};
+  border: 0.26vw solid red;
+  left: ${({ x }) => `${x - 1.5}%`};
+  top: ${({ y }) => `${y - 2.5}%`};
 `;
 
 export { Square };
