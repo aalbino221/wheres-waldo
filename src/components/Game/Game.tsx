@@ -32,10 +32,10 @@ export default function Game() {
         );
         if (
           character &&
-          x >= character.xCoordinates - 15 &&
-          x <= character.xCoordinates + 15 &&
-          y >= character.yCoordinates - 20 &&
-          y <= character.yCoordinates + 20
+          x >= character.xCoordinates - 20 &&
+          x <= character.xCoordinates + 20 &&
+          y >= character.yCoordinates - 25 &&
+          y <= character.yCoordinates + 25
         ) {
           return { ...char, found: true };
         }
@@ -77,6 +77,7 @@ export default function Game() {
 
   const addSquare = (x: number, y: number) => {
     setSquares([...squares, { x, y }]);
+    console.log(x, y);
   };
 
   useEffect(() => {

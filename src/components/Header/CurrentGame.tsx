@@ -36,7 +36,7 @@ export default function CurrentGame() {
             <img
               key={index}
               src={character.photo}
-              style={{ filter: character.found ? 'grayscale(100%)' : '' }}
+              style={{ opacity: character.found ? '0.3' : '' }}
               alt=""
             />
           );
