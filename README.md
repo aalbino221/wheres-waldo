@@ -8,8 +8,8 @@ https://where-s-wally-35450.web.app/#/leaderboard
 ## 📷 Screenshot
 
 <p>
-  <img src="https://github.com/aalbino221/wheres-waldo/assets/93986213/2d3d3d95-2274-4a69-87d2-364bf51ac303" alt="Screenshot 1" width="200">
   <img src="https://github.com/aalbino221/wheres-waldo/assets/93986213/b937f5d7-65bb-4324-95ba-b3c2a4a6af87" alt="Screenshot 2" width="200">
+  <img src="https://github.com/aalbino221/wheres-waldo/assets/93986213/2d3d3d95-2274-4a69-87d2-364bf51ac303" alt="Screenshot 1" width="200">
   <img src="https://github.com/aalbino221/wheres-waldo/assets/93986213/c929d159-082d-4b8c-9c09-f5c3004103f6" alt="Screenshot 3" width="200">
 </p>
 
