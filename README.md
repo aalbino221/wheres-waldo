@@ -8,7 +8,7 @@ https://where-s-wally-35450.web.app/#/leaderboard
 ## Screenshot
 
 ![image](https://github.com/aalbino221/wheres-waldo/assets/93986213/2d3d3d95-2274-4a69-87d2-364bf51ac303)
-![image](https://github.com/aalbino221/wheres-waldo/assets/93986213/dc249efe-8189-4ee6-883b-a95c52bf189c)
+![image](https://github.com/aalbino221/wheres-waldo/assets/93986213/b937f5d7-65bb-4324-95ba-b3c2a4a6af87)
 ![image](https://github.com/aalbino221/wheres-waldo/assets/93986213/c929d159-082d-4b8c-9c09-f5c3004103f6)
 
 ## Features
