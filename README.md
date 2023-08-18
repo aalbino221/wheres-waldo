@@ -3,7 +3,7 @@
 A web application based on the popular game "Where's Waldo?" using HTML, CSS, React, Styled Components (CSS in JS), and TypeScript on the frontend, and Firebase on the backend. Multiple images, each featuring specific characters to be found, are incorporated, along with a dynamic leaderboard that tracks player scores based on completion time. Firebase is utilized as the backend for storage, encompassing scores, character information, and images.
 
 ## 🚀 Demo
-(https://where-s-wally-35450.web.app/#/)
+https://where-s-wally-35450.web.app/#/
 
 ## 📷 Screenshot
 
